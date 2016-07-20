@@ -1,0 +1,11 @@
+[
+{
+   "question": "What is the national flower of South Korea?", 
+   "query": "SELECT ?v2 WHERE { ?v1 ?p1 ?v2 . } ", 
+"slots": [ {"s": "v1", "p": "verbalization", "o": "South Korea"}, 
+{"s": "v1", "p": "is", "o": "owl:NamedIndividual"}, 
+{"s": "p1", "p": "verbalization", "o": "national flower"}, 
+{"s": "p1", "p": "is", "o": "owl:DatatypeProperty"} 
+], 
+"score": 0.8 
+}]
