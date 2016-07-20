@@ -24,7 +24,7 @@ public class DisambiguationTest {
 			for(int j = 3; j < 9 ; j++){
 				JSONParser parser = new JSONParser();
 				//input file name
-				Object obj = parser.parse(new FileReader("/home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/test" + j + ".json"));
+				Object obj = parser.parse(new FileReader("/home/andfre/files/source/stargraph_disambiguation/test_data/test" + j + ".json"));
 				
 				JSONArray jsonArray= (JSONArray) obj;
 				Iterator i = jsonArray.iterator();
