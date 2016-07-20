@@ -31,7 +31,7 @@ public class Service {
      * specified at
      * https://github.com/okbqa/disambiguation/wiki/IO-Specification Splits the
      * input into classes, properties and resources. Disambiguates using
-     * AGDISTIS service in case of resources and dictionary lookups in case of
+     * STARGRAPH service in case of resources and dictionary lookups in case of
      * classes and properties.
      *
      * @return String that will be returned as a text/plain response.
@@ -43,7 +43,7 @@ public class Service {
 
         if (data.length() <= 1) {
             LOGGER.log(Level.WARNING, "Input {0} is too short", data);
-            return "{\"message\": \"This is the disambiguation service based on AGDISTIS\" }";
+            return "{\"message\": \"This is the disambiguation service based on STARGRAPH\" }";
         }
 		StarGraphDisambiguation starGraphDisambiguation = new StarGraphDisambiguation();
 		
