@@ -16,6 +16,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import de.unipassau.disambiguation.stargraph_client.StarGraphDisambiguation;
+
 /**
  * Root resource (exposed at "stargraph " path)
  */

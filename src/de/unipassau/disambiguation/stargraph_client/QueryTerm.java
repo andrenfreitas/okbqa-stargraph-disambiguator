@@ -1,6 +1,5 @@
-package de.unipassau.disambiguation;
+package de.unipassau.disambiguation.stargraph_client;
 
-import de.unipassau.disambiguation.stargraph_client.EntityType;
 
 public class QueryTerm {
 

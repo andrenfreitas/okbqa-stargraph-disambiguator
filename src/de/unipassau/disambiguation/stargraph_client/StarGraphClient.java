@@ -10,9 +10,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 
-import de.unipassau.disambiguation.Mapping;
-import de.unipassau.disambiguation.QueryTemplate;
-import de.unipassau.disambiguation.QueryTerm;
 import de.unipassau.disambiguation.ResolvedEntity;
 
 public class StarGraphClient {

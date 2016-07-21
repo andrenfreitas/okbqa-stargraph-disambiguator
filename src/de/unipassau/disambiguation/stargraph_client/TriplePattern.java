@@ -1,4 +1,5 @@
-package de.unipassau.disambiguation;
+package de.unipassau.disambiguation.stargraph_client;
+
  
 public class TriplePattern {
 

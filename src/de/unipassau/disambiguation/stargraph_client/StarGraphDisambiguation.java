@@ -1,4 +1,4 @@
-package de.unipassau.disambiguation;
+package de.unipassau.disambiguation.stargraph_client;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,7 @@ import java.util.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import de.unipassau.disambiguation.stargraph_client.EntityType;
-import de.unipassau.disambiguation.stargraph_client.StarGraphClient;
+import de.unipassau.disambiguation.ResolvedEntity;
 
 public class StarGraphDisambiguation {
 

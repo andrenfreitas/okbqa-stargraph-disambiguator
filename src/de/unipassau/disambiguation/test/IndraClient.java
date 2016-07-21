@@ -1,4 +1,4 @@
-package de.unipassau.disambiguation;
+package de.unipassau.disambiguation.test;
 
 import java.io.IOException;
 
@@ -8,9 +8,9 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class Client {
+public class IndraClient {
 
-	public Client() {
+	public IndraClient() {
 
 	}
 	
@@ -76,7 +76,7 @@ public class Client {
 	
 	public static void main(String[] args) {
 
-		Client client = new Client();
+		IndraClient client = new IndraClient();
 		client.indraExample();
 	   
 	}

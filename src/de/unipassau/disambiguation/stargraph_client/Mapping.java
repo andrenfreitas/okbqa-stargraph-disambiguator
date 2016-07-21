@@ -1,9 +1,9 @@
-package de.unipassau.disambiguation;
+package de.unipassau.disambiguation.stargraph_client;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import de.unipassau.disambiguation.stargraph_client.EntityType;
+import de.unipassau.disambiguation.ResolvedEntity;
 
 public class Mapping {
 

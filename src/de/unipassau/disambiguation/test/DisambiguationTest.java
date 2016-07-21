@@ -1,4 +1,4 @@
-package de.unipassau.disambiguation;
+package de.unipassau.disambiguation.test;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,6 +9,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import de.unipassau.disambiguation.stargraph_client.StarGraphDisambiguation;
 
 public class DisambiguationTest {
 
