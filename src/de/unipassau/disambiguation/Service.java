@@ -54,16 +54,18 @@ public class Service {
 		JSONParser parser = new JSONParser();
 		
         try {
-			
-			Object obj = parser.parse(data);
-			
-			JSONArray jsonArray= (JSONArray) obj;
-			Iterator i = jsonArray.iterator();
-				        
-			while(i.hasNext()) {
-				JSONObject jsonObject = (JSONObject) i.next();
-				output = starGraphDisambiguation.resolveEntities(jsonObject);
-			}
+        	
+			JSONObject jsonObject = (JSONObject) parser.parse(data);
+			output = starGraphDisambiguation.resolveEntities(jsonObject);
+					
+			//Object obj = parser.parse(data);			
+//			JSONArray jsonArray= (JSONArray) obj;
+//			Iterator i = jsonArray.iterator();
+//				        
+//			while(i.hasNext()) {
+//				JSONObject jsonObject = (JSONObject) i.next();
+//				output = starGraphDisambiguation.resolveEntities(jsonObject);
+//			}
 			
 		} catch (ParseException e) {
 			e.printStackTrace();
