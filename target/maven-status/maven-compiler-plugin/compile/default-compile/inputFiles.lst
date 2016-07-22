@@ -3,6 +3,7 @@
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/QueryTemplate.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/test/IndraClient.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/QueryTerm.java
+/home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/test/StarGraphClientMain.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/Main.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/TriplePattern.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/ResolvedEntity.java
@@ -12,7 +13,6 @@
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/StarGraphClient.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/EntitySearchResponse.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/Mapping.java
-/home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/StarGraphClientMain.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/Entity.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/StarGraphDisambiguation.java
 /home/andfre/files/source/stargraph_disambiguation/src/de/unipassau/disambiguation/stargraph_client/PredicateAndPivot.java

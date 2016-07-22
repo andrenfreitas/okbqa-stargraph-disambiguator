@@ -21,6 +21,7 @@ public class StarGraphDisambiguation {
 		
 		List<QueryTerm> instances = new ArrayList<QueryTerm>();
 		List<QueryTerm> properties = new ArrayList<QueryTerm>();
+		List<QueryTerm> classes = new ArrayList<QueryTerm>();
 		
 		List<Mapping> mappings = new ArrayList<>();
 		for(QueryTerm queryTerm : queryTemplate.getQueryTerms()){
@@ -28,6 +29,9 @@ public class StarGraphDisambiguation {
 				instances.add(queryTerm);
 			else if(queryTerm.getType().equals(EntityType.PROPERTY))
 				properties.add(queryTerm);
+			else if(queryTerm.getType().equals(EntityType.CLASS)){
+				classes.add(queryTerm);
+			}
 		}
 		
 		List<Mapping> resolvedPivots = new ArrayList<>();		
@@ -39,8 +43,12 @@ public class StarGraphDisambiguation {
 		List<Mapping> resolvedProperties = new ArrayList<>();		
 		resolvedProperties = resolveProperties(predicateAndPivots);
 		
+		List<Mapping> resolvedClasses = new ArrayList<>();		
+		resolvedClasses = resolveClasses(classes);
+		
 		mappings.addAll(resolvedPivots);
 		mappings.addAll(resolvedProperties);
+		mappings.addAll(resolvedClasses);
 		return generateJSONOutput(queryTemplate, mappings);
 	}
 	
@@ -83,17 +91,29 @@ public class StarGraphDisambiguation {
 		return mappings;
 	}
 
-	private List<Mapping> resolveClasses(List<PredicateAndPivot> predicateAndPivots) throws Exception{
+	private List<Mapping> resolveClasses(List<QueryTerm> queryTerms) throws Exception{
 		
 		StarGraphClient sgClient = new StarGraphClient();
 		
 		List<Mapping> mappings = new ArrayList<>();
-		for(PredicateAndPivot predicateAndPivot :  predicateAndPivots){
-			mappings.add(sgClient.classSearch(predicateAndPivot.getPivot(), predicateAndPivot.getProperty(), predicateAndPivot.getPropertyVariable()));
+		for(QueryTerm queryTerm : queryTerms){
+			mappings.add(sgClient.classSearch(queryTerm.getTerm(), queryTerm.getVariable()));
 		}
 		
 		return mappings;
 	}
+	
+//	private List<Mapping> resolveClassesUsingPivots(List<PredicateAndPivot> predicateAndPivots) throws Exception{
+//		
+//		StarGraphClient sgClient = new StarGraphClient();
+//		
+//		List<Mapping> mappings = new ArrayList<>();
+//		for(PredicateAndPivot predicateAndPivot :  predicateAndPivots){
+//			mappings.add(sgClient.classSearch(predicateAndPivot.getPivot(), predicateAndPivot.getProperty(), predicateAndPivot.getPropertyVariable()));
+//		}
+//		
+//		return mappings;
+//	}
 	
 	private QueryTemplate parseJSONInput(JSONObject inputJSON){
 		
@@ -109,12 +129,14 @@ public class StarGraphDisambiguation {
 
         JSONArray instances = generateJSONMappings(queryTemplate, mappings, EntityType.INSTANCE);
         JSONArray properties = generateJSONMappings(queryTemplate, mappings, EntityType.PROPERTY);
+        JSONArray classes = generateJSONMappings(queryTemplate, mappings, EntityType.CLASS);
         
         JSONArray ned = new JSONArray();
         JSONObject nedBody = new JSONObject();
         nedBody.put("score", 1);
         nedBody.put("entities", instances);
         nedBody.put("properties", properties);
+        nedBody.put("classes", classes);
         ned.add(nedBody);
         object.put("ned", ned);
         return object;

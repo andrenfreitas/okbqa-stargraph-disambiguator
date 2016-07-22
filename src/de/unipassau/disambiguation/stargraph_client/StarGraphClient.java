@@ -38,10 +38,14 @@ public class StarGraphClient {
 		return new Mapping(entityTerm, EntityType.PROPERTY, variable, entities);
 	}
 
-	public Mapping classSearch(String entityURI, String entityTerm, String variable) throws Exception{
+	public Mapping classSearch(String entityTerm, String variable) throws Exception{
 		
 		List<ResolvedEntity> entities = new ArrayList<>();
-		entities = pivotedSearch(entityURI, entityTerm, EntityType.CLASS, 2, RankModel.W2V);
+		if(entityTerm.split(" ").length > 1){
+			entities = searchEntity(entityTerm, EntityType.COMPLEXCLASS, 2, RankModel.W2V);
+		}else{
+			entities = searchEntity(entityTerm, EntityType.CLASS, 2, RankModel.W2V);
+		}
 		return new Mapping(entityTerm, EntityType.CLASS, variable, entities);
 	}
 	

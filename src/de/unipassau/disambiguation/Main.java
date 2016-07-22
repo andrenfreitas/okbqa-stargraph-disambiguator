@@ -1,17 +1,19 @@
 package de.unipassau.disambiguation;
 
+import java.io.IOException;
+import java.net.URI;
+
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;
-
-import java.io.IOException;
-import java.net.URI;
 
 /**
  */
 public class Main {
     // Base URI the Grizzly HTTP server will listen on
-    public static final String BASE_URI = "http://localhost:2357/stargraph_disambiguation/";
+    //public static final String BASE_URI = "http://localhost:2357/stargraph_disambiguation/";
+    public static final String BASE_URI = "http://121.254.173.77:2359/stargraph_disambiguation/";
+
     /**
      * Starts Grizzly HTTP server exposing JAX-RS resources defined in this application.
      * @return Grizzly HTTP server.

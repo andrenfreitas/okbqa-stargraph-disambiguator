@@ -3,7 +3,6 @@ de/unipassau/disambiguation/stargraph_client/EntityType.class
 de/unipassau/disambiguation/stargraph_client/StarGraphClient.class
 de/unipassau/disambiguation/stargraph_client/Entity.class
 de/unipassau/disambiguation/Main.class
-de/unipassau/disambiguation/stargraph_client/StarGraphClientMain.class
 de/unipassau/disambiguation/ResolvedEntity.class
 de/unipassau/disambiguation/Service.class
 de/unipassau/disambiguation/stargraph_client/RankModel.class

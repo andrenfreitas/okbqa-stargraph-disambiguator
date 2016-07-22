@@ -1,8 +1,10 @@
 package de.unipassau.disambiguation.stargraph_client;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -11,7 +13,7 @@ public class QueryTemplate {
 
 	private String question;
 	private String query;
-	private double score;
+	private String score;
 	
 	private List<Slot> slots = new ArrayList<>();
 	private List<QueryTerm> queryTerms = new ArrayList<>();
@@ -27,7 +29,7 @@ public class QueryTemplate {
 		if(inputJSON.containsKey("query"))
 			query = (String) inputJSON.get("query");
 		if(inputJSON.containsKey("score"))
-			score = (double) inputJSON.get("score");
+			score = (String) inputJSON.get("score");
 		
 		if(inputJSON.containsKey("slots")) {
 			JSONArray slotJSONArray = (JSONArray) inputJSON.get("slots");
@@ -42,8 +44,7 @@ public class QueryTemplate {
 				slots.add(tempSlot);
 			}
 		}
-		
-		assembleQueryTerms(slots);
+		getQueryTerms(slots);
 	}
 
 
@@ -63,11 +64,11 @@ public class QueryTemplate {
 		this.query = query;
 	}
 
-	public double getScore() {
+	public String getScore() {
 		return score;
 	}
 
-	public void setScore(double score) {
+	public void setScore(String score) {
 		this.score = score;
 	}
 
@@ -103,7 +104,7 @@ public class QueryTemplate {
 				term = slot.getO();
 			}else if(slot.getP().equals("is")){
 				 String typeStr = slot.getO();
-				 if(typeStr.contains("rdf:Resource|rdfs:Literal") || typeStr.contains("owl:NamedIndividual"))
+				 if(typeStr.contains("rdf:Resource") || typeStr.contains("rdfs:Literal") || typeStr.contains("owl:NamedIndividual"))
 					 type = EntityType.INSTANCE;
 				 else if(typeStr.contains("rdf:Property") || typeStr.contains("owl:DatatypeProperty"))
 					 type = EntityType.PROPERTY;
@@ -115,6 +116,61 @@ public class QueryTemplate {
 			}
 			i++;
 		}
+	}
+	
+	private Set<String> getAllVariables(List<Slot> slots){
+		
+		Set<String> variables = new HashSet<>();
+		for(Slot slot : slots){
+			variables.add(slot.getS());
+		}
+		
+		return variables;
+	}
+	
+	private void getQueryTerms(List<Slot> slots){
+		
+		for(String variable  : getAllVariables(slots)){
+			queryTerms.add(new QueryTerm(variable, getVerbalization(variable), getType(variable)));
+		}
+		
+		for(QueryTerm queryTerm : queryTerms)
+			System.out.println(queryTerm.toString());
+	}
+	
+	private String getVerbalization(String variable){
+		
+		String term = "";
+		for(Slot slot : slots){
+			if(slot.getP().contains("verbalization") && slot.getS().contains(variable)){
+				term = slot.getO();
+			}
+		}
+		return term;
+	}
+	
+	private EntityType getType(String variable){
+		
+		EntityType type = null;
+		
+		for(Slot slot : slots){
+			if(slot.getP().equals("is")){
+				 String typeStr = slot.getO();
+				 if(slot.getS().contains(variable) && (typeStr.contains("rdf:Resource") || typeStr.contains("rdfs:Literal") || typeStr.contains("owl:NamedIndividual"))){
+					 type = EntityType.INSTANCE;
+					 break;
+				 }else if(slot.getS().contains(variable) && (typeStr.contains("rdf:Property") || typeStr.contains("owl:DatatypeProperty"))){
+					 type = EntityType.PROPERTY;
+					 break;
+				 }else if(slot.getS().contains(variable) && (typeStr.contains("rdf:Class") || typeStr.contains("owl:Class"))){
+					 type = EntityType.CLASS;
+					 break;
+				 }else{
+					 type = EntityType.OTHER;
+				 }
+			}
+		}
+		return type;
 	}
 	
 //	public List<PredicateAndPivot> getPredicatePivotAssociations(){

@@ -1,0 +1,9 @@
+{"query": "SELECT ?v2 WHERE { ?v2 ?v10 ?v9 . ?v7 ?v4 ?v2 . } ", 
+"slots": [{"p": "is", "s": "v7", "o": "rdf:Resource"}, 
+{"p": "verbalization", "s": "v7", "o": "Obama"}, 
+{"p": "is", "s": "v9", "o": "rdf:Class"}, 
+{"p": "verbalization", "s": "v9", "o": "person"}, 
+{"p": "is", "s": "v4", "o": "rdf:Property"}, {"p": "verbalization", "s": "v4", "o": "wife"}, 
+{"p": "is", "s": "v10", "o": "<http://lodqa.org/vocabulary/sort_of>"}], 
+"score": "1.0", 
+"question": "Who is the wife of Barack Obama?"}

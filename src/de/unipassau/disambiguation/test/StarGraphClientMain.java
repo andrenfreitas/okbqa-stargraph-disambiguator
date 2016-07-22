@@ -1,9 +1,13 @@
-package de.unipassau.disambiguation.stargraph_client;
+package de.unipassau.disambiguation.test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.unipassau.disambiguation.ResolvedEntity;
+import de.unipassau.disambiguation.stargraph_client.Entity;
+import de.unipassau.disambiguation.stargraph_client.EntityType;
+import de.unipassau.disambiguation.stargraph_client.RankModel;
+import de.unipassau.disambiguation.stargraph_client.StarGraphClient;
 
 public class StarGraphClientMain {
 
@@ -26,6 +30,9 @@ public class StarGraphClientMain {
 			System.out.println("------------------ searchEntity ----------------------");
 			printEntities(client.searchEntity("Barack Obama", 3));
 
+			System.out.println("------------------ searchEntity ----------------------");
+			printEntities(client.searchEntity("wine production", EntityType.CLASS, 2, RankModel.W2V));
+			
 			System.out.println("------------------ searchEntity ----------------------");
 			printEntities(client.searchEntity("wife", EntityType.PROPERTY, 50, RankModel.W2V));
 			

@@ -23,20 +23,25 @@ public class DisambiguationTest {
 		StarGraphDisambiguation starGraphDisambiguation = new StarGraphDisambiguation();
 		
 		try {
-			for(int j = 3; j < 9 ; j++){
+			for(int j = 9; j < 12 ; j++){
 				JSONParser parser = new JSONParser();
 				//input file name
 				Object obj = parser.parse(new FileReader("/home/andfre/files/source/stargraph_disambiguation/test_data/test" + j + ".json"));
 				
-				JSONArray jsonArray= (JSONArray) obj;
-				Iterator i = jsonArray.iterator();
-				
-				while(i.hasNext()) {
-					JSONObject jsonObject = (JSONObject) i.next();
-					JSONObject jsonOutput = starGraphDisambiguation.resolveEntities(jsonObject);
-					System.out.println("----------------------------------------------------------");
-					System.out.println(jsonOutput.toJSONString());
-				}
+				JSONObject jsonObject = (JSONObject) obj;
+				JSONObject jsonOutput = starGraphDisambiguation.resolveEntities(jsonObject);
+				System.out.println("----------------------------------------------------------");
+				System.out.println(jsonOutput.toJSONString());
+//				
+//				JSONArray jsonArray= (JSONArray) obj;
+//				Iterator i = jsonArray.iterator();
+//				
+//				while(i.hasNext()) {
+//					JSONObject jsonObject = (JSONObject) obj;
+//					JSONObject jsonOutput = starGraphDisambiguation.resolveEntities(jsonObject);
+//					System.out.println("----------------------------------------------------------");
+//					System.out.println(jsonOutput.toJSONString());
+//				}
 			}
 			
 		} catch (FileNotFoundException e) {

@@ -1,11 +1,11 @@
-[
 {
-   "question": "Who was the Russian physiologist that won the Nobel Prize for Physiology or Medicine in 1904?", 
-   "query": "SELECT ?v2 WHERE { ?v1 ?p1 ?v2 . } ", 
-"slots": [ {"s": "v1", "p": "verbalization", "o": "Nobel Prize for Physiology or Medicine in 1904"}, 
-{"s": "v1", "p": "is", "o": "owl:NamedIndividual"}, 
-{"s": "p1", "p": "verbalization", "o": "won"}, 
-{"s": "p1", "p": "is", "o": "owl:DatatypeProperty"} 
+"question": "What is the capital of France?",
+"query": "SELECT ?v2 WHERE { ?v2 ?v9 ?v8 . ?v7 ?v4 ?v2 . } ", 
+"slots": 
+[{"p": "is", "s": "v4", "o": "rdf:Property"}, {"p": "verbalization", "s": "v4", "o": "capital"}, 
+{"p": "is", "s": "v9", "o": "<http://lodqa.org/vocabulary/sort_of>"}, {"p": "is", "s": "v8", "o": "rdf:Class"}, 
+{"p": "verbalization", "s": "v8", "o": "thing"}, {"p": "is", "s": "v7", "o": "rdf:Resource"}, 
+{"p": "verbalization", "s": "v7", "o": "France"}
 ], 
-"score": 0.8 
-}]
+"score": "1.0"
+}
